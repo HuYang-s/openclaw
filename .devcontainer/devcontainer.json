@@ -1,0 +1,22 @@
+{
+  "name": "OpenClaw",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {}
+  },
+  "postCreateCommand": "npm install -g pnpm && pnpm install && pnpm ui:build && pnpm build",
+  "postStartCommand": "pnpm openclaw gateway --port 18789 --verbose &",
+  "forwardPorts": [18789],
+  "portsAttributes": {
+    "18789": {
+      "label": "OpenClaw Gateway",
+      "onAutoForward": "notify",
+      "visibility": "public"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["esbenp.prettier-vscode"]
+    }
+  }
+}
